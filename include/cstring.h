@@ -36,6 +36,9 @@ typedef struct String String;
 /* Creates a String object from c-string (char *) */
 String *string_from(Arena *arena, char *str);
 
+/* Creates a deep copy of an existing String object */
+String *string_clone(Arena *arena, String *str);
+
 /* Concatinates two string objects */
 String *string_concat(Arena *arena, String *str1, String *str2);
 

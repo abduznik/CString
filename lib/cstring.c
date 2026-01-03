@@ -25,6 +25,23 @@ String *string_from(Arena *arena, char *str) {
 	return st;
 }
 
+String *string_clone(Arena *arena, String *str) {
+    String *st;
+    char *new_str;
+
+    st = (String *)arena_alloc(arena, sizeof(String));
+    
+    new_str = (char *)arena_alloc(arena, str->length + 1);
+
+    memcpy(new_str, str->str, str->length);
+    new_str[str->length] = '\0';
+
+    st->str = new_str;
+    st->length = str->length;
+
+    return st;
+}
+
 String *string_concat(Arena *arena, String *str1, String *str2) {
 	String *st;
 	char *new_str;
